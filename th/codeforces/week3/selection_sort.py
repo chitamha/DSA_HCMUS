@@ -1,6 +1,6 @@
 import sys
 
-def insertion_sort(n, arr):
+def selection_sort(n, arr):
     for i in range(n):
         idx = i
         for j in range(i + 1, n, 1):
@@ -13,6 +13,6 @@ def insertion_sort(n, arr):
 def main():
     n = int(input())
     arr = list(map(int, input().split()))
-    insertion_sort(n, arr)
+    selection_sort(n, arr)
 
 main()
