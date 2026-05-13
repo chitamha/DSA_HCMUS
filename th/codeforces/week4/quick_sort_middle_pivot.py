@@ -4,7 +4,7 @@ write = sys.stdout.write
 
 def partition(arr, low, high):
     i, j = low - 1, high + 1
-    pivot_idx = low
+    pivot_idx = (low + high) // 2
     pivot = arr[pivot_idx]
     while True:
         i += 1
