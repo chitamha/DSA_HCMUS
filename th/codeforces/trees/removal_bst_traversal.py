@@ -82,7 +82,8 @@ class BST:
             return []
         
         result = []
-        dq = [self.root]
+        dq = deque()
+        dq.append(self.root)
 
         while dq:
             node = dq.popleft()
