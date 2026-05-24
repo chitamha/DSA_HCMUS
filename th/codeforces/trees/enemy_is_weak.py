@@ -1,3 +1,4 @@
+# Khong AC (duoc 20 tests)
 import sys
 import bisect
 write = sys.stdout.write
