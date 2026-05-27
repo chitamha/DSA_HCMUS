@@ -1,8 +1,6 @@
 import sys
 write = sys.stdout.write
 
-sys.setrecursionlimit(200005)
-
 class Node:
     __slot__ = ['data', 'height', 'size', 'left', 'right']
     def __init__(self, data):
