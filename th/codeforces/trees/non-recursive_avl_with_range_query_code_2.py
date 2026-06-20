@@ -48,7 +48,7 @@ class AVLTree():
         return rh - lh
 
     def rebalance(self, node):
-        self.update(node)
+        self.update(node) # Ở trên cùng hay dưới cùng đều được (có thể chọn 1 trong 2)
         bal = self.getBalance(node)
 
         if bal < -1:
