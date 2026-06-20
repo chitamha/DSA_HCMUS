@@ -7,7 +7,8 @@ def main():
     p = [0] * (n + 1)
     for i in range(1, n + 1):
         p[i] = int(sys.stdin.readline())
-        adj[p[i]].append(i)
+        if p[i] != -1:
+            adj[p[i]].append(i)
     height = [-1] * (n + 1)
 
     def DFS(u):
