@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "process",
+            "label": "g++ build active file",
+            "command": "C:\\msys64\\usr\\bin\\bash.exe",
+            "args": [
+                "-lc",
+                "export PATH=/mingw64/bin:$PATH; FILE=$(cygpath '${file}'); OUTDIR=$(cygpath '${fileDirname}'); g++ -std=c++17 -O2 \"$FILE\" -o \"$OUTDIR/${fileBasenameNoExtension}.exe\" && echo 'Build OK' || echo 'Build FAILED'"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build with MinGW GCC via MSYS2 bash (supports bits/stdc++.h)"
+        }
+    ]
+}
