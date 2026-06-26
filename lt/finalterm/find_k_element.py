@@ -1,32 +1,43 @@
 import sys
 
-def partition(arr, low, high):
-    i, j = low - 1, high + 1
-    pivotIdx = (i + j) // 2
-    pivot = arr[pivotIdx]
-    while True:
-        i += 1
-        while arr[i] < pivot:
+class Solution:
+    def partition(self, arr, low, high):
+        i, j = low - 1, high + 1
+        pivotIdx = (i + j) // 2
+        pivot = arr[pivotIdx]
+        while True:
             i += 1
-        j -= 1
-        while arr[j] > pivot:
+            while arr[i] < pivot:
+                i += 1
             j -= 1
+            while arr[j] > pivot:
+                j -= 1
 
-        if i >= j:
-            break
+            if i >= j:
+                return j
+            
+            arr[i], arr[j] = arr[j], arr[i]
+
+
+    def solve(self, n, k, low, high, arr):
+        if low == high:
+            return arr[low]
+            
+        j = self.partition(arr, low, high)
+        left_count = j - low + 1
         
-        arr[i], arr[j] = arr[j], arr[i]
-        if i == pivotIdx:
-            pivotIdx = j
-        elif j == pivotIdx:
-            pivotIdx = i
+        if k <= left_count:
+            # Hoare's partition includes j in the left half, so we recurse on [low...j]
+            return self.solve(n, k, low, j, arr)
+        else:
+            return self.solve(n, k - left_count, j + 1, high, arr)
 
-
-def solve():
-    global n, k, arr
-
+    def findKthLargest(self, nums: list[int], k: int) -> int:
+        n = len(nums)
+        return self.solve(n, n - k + 1, 0, n - 1, nums)
 
 if __name__ == "__main__":
     n, k = map(int, sys.stdin.readline().strip().split())
-    arr = map(int, sys.stdin.readline().strip().split())
-    solve()
+    arr = list(map(int, sys.stdin.readline().strip().split()))
+    ans = Solution()
+    print(ans.findKthLargest(arr, k))
