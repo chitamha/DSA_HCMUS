@@ -32,12 +32,12 @@ class Solution:
         else:
             return self.solve(n, k - left_count, j + 1, high, arr)
 
-    def findKthLargest(self, nums: list[int], k: int) -> int:
+    def findKthSmallest(self, nums: list[int], k: int) -> int:
         n = len(nums)
-        return self.solve(n, n - k + 1, 0, n - 1, nums)
+        return self.solve(n, k, 0, n - 1, nums)
 
 if __name__ == "__main__":
     n, k = map(int, sys.stdin.readline().strip().split())
     arr = list(map(int, sys.stdin.readline().strip().split()))
     ans = Solution()
-    print(ans.findKthLargest(arr, k))
+    print(ans.findKthSmallest(arr, k))
